@@ -1,12 +1,13 @@
 import NavBar from "./components/NavBar"
-import One from "./components/One"
-
+import Page from "./components/Page"
+import Signup from "./components/Signup"
 function App() {
   
   return (
     <div>
   <NavBar/>
-  <One/>
+  <Page/>
+  <Signup/>
   
   </div>
 
