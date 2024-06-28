@@ -1,11 +1,13 @@
 import NavBar from "./components/NavBar"
-import Section from "./components/Section"
+import One from "./components/One"
+
 function App() {
   
   return (
     <div>
   <NavBar/>
-  <Section/>
+  <One/>
+  
   </div>
 
   )
