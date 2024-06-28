@@ -1,0 +1,34 @@
+.custom-navbar {
+  background-color: #f8f9fa; /* Light grey background for a modern look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.navbar-brand {
+  font-size: 1.5rem; /* Increase font size for brand logo */
+  font-weight: bold;
+  color: #4CBB17; /* Use brand color */
+}
+
+.nav-link {
+  font-size: 1.1rem; /* Slightly larger font for better readability */
+  padding: 0.5rem 1rem; /* Add some padding for a better touch target */
+  color: #333; /* Dark text for good contrast */
+  transition: color 0.3s ease;
+  margin-right: 1rem; /* Add margin to create space between links */
+}
+
+.nav-link:hover {
+  color: #4CBB17; /* Hover effect to match the brand color */
+}
+
+.custom-btn {
+  background-color: #4CBB17; /* Brand color for sign-up button */
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+  background-color: #3aa414; /* Darker shade for hover effect */
+}
