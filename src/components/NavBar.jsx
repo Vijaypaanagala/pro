@@ -1,8 +1,6 @@
 import React from "react";
-import "../Styles/NavBar.css"
-
-import {Link} from 'react-router-dom'
-
+import "../Styles/NavBar.css";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -23,7 +21,7 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
+              <Link to='/' className="nav-link active" aria-current="page" href="#">Home</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Find Work</a>
@@ -36,7 +34,7 @@ function NavBar() {
             </li>
           </ul>
           <form className="d-flex" role="search">
-            <Link to="/Page" className="nav-link" href="#">Login</Link>
+            <Link to="/Page" className="nav-link">Login</Link>
             <Link to="/Signup" type="button" className="btn btn-success custom-btn">Sign up</Link>
           </form>
         </div>
@@ -46,4 +44,3 @@ function NavBar() {
 }
 
 export default NavBar;
- 
