@@ -27,18 +27,19 @@ function Signup() {
         <h2>Signup</h2>
         <input
           type="text"
-          value={email}
-          onChange={onEmailChange}
-          placeholder="Email"
-          className="input-field"
-        />
-        <input
-          type="text"
           value={name}
           onChange={onChange}
           placeholder="Name"
           className="input-field"
         />
+        <input
+          type="text"
+          value={email}
+          onChange={onEmailChange}
+          placeholder="Email"
+          className="input-field"
+        />
+        
         <input
           type="password"
           value={pass}
