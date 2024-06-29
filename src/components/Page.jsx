@@ -14,6 +14,7 @@ function Page() {
   };
 
   return (
+    <center>
     <div className="container">
       <div className="login-form">
         <h2>Login</h2>
@@ -37,6 +38,7 @@ function Page() {
         </button>
       </div>
     </div>
+    </center>
   );
 }
 

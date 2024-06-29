@@ -1,4 +1,7 @@
+import React from "react";
 import "../Styles/NavBar.css"
+
+import {Link} from 'react-router-dom'
 
 
 function NavBar() {
@@ -33,8 +36,8 @@ function NavBar() {
             </li>
           </ul>
           <form className="d-flex" role="search">
-            <a className="nav-link" href="#">Login</a>
-            <button type="button" className="btn btn-success custom-btn">Sign up</button>
+            <Link to="/Page" className="nav-link" href="#">Login</Link>
+            <Link to="/Signup" type="button" className="btn btn-success custom-btn">Sign up</Link>
           </form>
         </div>
       </div>
