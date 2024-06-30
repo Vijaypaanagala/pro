@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Content on left, image on right */
-  padding: 80px;
+  padding: 100px;
   height: calc(100vh - 160px); 
   font-family: 'Roboto', sans-serif;/* Account for padding and potential header/footer */
  
@@ -46,4 +46,6 @@
 .intro-image {
   width: 50%; /* Adjust image width as needed */
   height: auto;
+  object-fit: cover;
+
 }

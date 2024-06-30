@@ -1,62 +1,73 @@
-/* Global Styles */
 
 
 /* Main Container */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-.main-con {
+.main-contain {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 85vh;
-  margin: 0 auto;
+  height: 85vh; /* Set main container height to 100vh */
+  width: 80%; /* Set main container width to 80% */
+  margin: 0 auto; /* Center main container horizontally */
+  padding: 20px;
   font-family: 'Roboto', sans-serif;
- 
    /* Calming green background */
 }
 
-/* Image Container */
+/* Image Form Container */
 
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 500px; /* Increased width */
-  height: 400px; /* Increased height */
-  padding: 20px;
+.image-form-container {
+  background-color: #fff;
+
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px; /* Increased width */
+  height: 450px; /* Increased height */
 }
 
-.image-container img {
-  width: 500px; /* Increased width */
-  height: 400px; /* Increased height */
+/* Image Form */
+
+.image-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  height: 450px; /* Matched height with image form container */
+}
+
+.image-form img {
+  width: 500px; /* Decreased width */
+  height: 450px; /* Decreased height */
   border-radius: 10px;
   object-fit: cover;
+
+  
 }
 
-/* Login Form Container */
+/* Signup Form Container */
 
-.login-form-container {
+.signup-form-container {
   background-color: #fff;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 400px; /* Increased width */
-  height: 400px; /* Increased height */
+  width: 450px; /* Increased width */
+  height: 450px; /* Increased height */
 }
 
-/* Login Form */
+/* Signup Form */
 
-.login-form {
+.signup-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  height: 100%; /* Matched height with login form container */
+  height: 100%; /* Matched height with signup form container */
 }
 
-.login-form h2 {
-  margin-bottom: 40px;
+.signup-form h2 {
+  margin-bottom: 20px;
   color: #4CBB17; /* Green color */
   font-weight: bold;
 }
@@ -68,11 +79,10 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  
 }
 
 .input-field:focus {
-  border-color: #4CBB17;
+border-color: #4CBB17;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -87,7 +97,6 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  
 }
 
 .login-btn:hover {

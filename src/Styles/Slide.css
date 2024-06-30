@@ -1,5 +1,5 @@
 .carousel-container {
-  max-width: 900px;
+  max-width: 1120px;
   margin: auto;
   padding: 20px;
 }
@@ -15,7 +15,7 @@
 }
 
 .carousel-image {
-  max-height: 430px;
+  max-height: 530px;
   object-fit: cover;
   filter: brightness(1); /* Slightly darker to enhance text visibility */
 }
@@ -55,7 +55,7 @@ h3{
   margin-bottom: 20px; /* More space for a cleaner look */
   color: #2c3e50; /* Darker color for better contrast */
   letter-spacing: 1px; 
-  margin-left: 80px;
+  margin-left: 220px;
   margin-top: 10px;
 }
 

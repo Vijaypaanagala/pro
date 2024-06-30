@@ -11,6 +11,7 @@ import Slide from "./components/Slide";
 
 
 
+
 function App() {
   return (
     <Router>
@@ -22,6 +23,8 @@ function App() {
             <Intro />
             <Slide/>
             <Main />
+          
+            
             
           </>} />
           <Route path="/page" element={<Page />} />
