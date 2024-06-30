@@ -1,5 +1,6 @@
-import "../Styles/Page.css"
 import React, { useState } from "react";
+import "../Styles/Page.css";
+
 
 function Page() {
   const [name, setName] = useState("");
@@ -14,8 +15,6 @@ function Page() {
   };
 
   return (
-    <center>
-    <div className="container">
       <div className="login-form">
         <h2>Login</h2>
         <input
@@ -32,13 +31,10 @@ function Page() {
           placeholder="Password"
           className="input-field"
         />
-        
         <button type="button" className="login-btn">
           Login
         </button>
       </div>
-    </div>
-    </center>
   );
 }
 
