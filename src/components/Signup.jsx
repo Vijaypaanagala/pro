@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import log from '../assets/singn.png';
 import "../Styles/Signup.css"
 
+
 function Signup() {
   const [email, setEmail] = useState("");  
   const [name, setName] = useState("");

@@ -7,10 +7,10 @@ import Main from "./components/Main";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
 import Slide from "./components/Slide";
+import Talent from "./components/Talent";
 
 import Last from "./components/Last";
-
-
+import Work from "./components/Work";
 
 
 function App() {
@@ -25,14 +25,28 @@ function App() {
             <Slide/>
             <Main />
             <Last/>
+           
             
             
           </>} />
           <Route path="/page" element={<Page />} />
           <Route path="/Signup" element={<Signup />} />
+          <Route path="/Talent" element={
+            <>
+            <NavBar />
+            <Talent/>
+            </>
+          } />
+          <Route path="/Work" element={
+            <>
+            <NavBar />
+            <Work/>
+            </>
+          } />
         </Routes>
       </div>
     </Router>
+    
   );
 }
 
