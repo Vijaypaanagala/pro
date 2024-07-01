@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/Page.css";
 import log from '../assets/log.png';
-import "../Styles/Page.css";
 
 function Page() {
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
-
+  
   const onChange = (event) => {
     setName(event.target.value);
   };
@@ -16,7 +15,6 @@ function Page() {
   };
 
   return (
-     
     <div className="main-con">
       <div className="image-container">
         <img src={log} alt="Logo" />
@@ -43,8 +41,11 @@ function Page() {
           </button>
         </div>
       </div>
+      <div>
+        
+      </div>
+      
     </div>
-
   );
 }
 
