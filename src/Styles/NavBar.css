@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
 .custom-navbar {
   background-color: #f8f9fa; /* Light grey background for a modern look */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: 'Roboto', sans-serif;
+  position: fixed; /* Fixes the navbar at the top */
+  width: 100%; /* Ensures the navbar takes the full width of the screen */
+  top: 0; /* Positions the navbar at the top of the page */
+  z-index: 1000; /* Ensures the navbar stays above other content */
 }
 
 .navbar-brand {
@@ -31,4 +38,9 @@
 
 .custom-btn:hover {
   background-color: #3aa414; /* Darker shade for hover effect */
+}
+
+/* Ensure the rest of the content is not hidden behind the fixed navbar */
+body {
+  padding-top: 70px; /* Adjust based on the height of your navbar */
 }

@@ -1,24 +1,34 @@
-import NavBar from "./components/NavBar"
-import Page from "./components/Page"
-import Signup from "./components/Signup"
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
+import React from "react";
+import NavBar from "./components/NavBar";
+import Page from "./components/Page";
+import Signup from "./components/Signup";
+import Intro from "./components/Intro";
+import Main from "./components/Main";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import './App.css'
+import Slide from "./components/Slide";
+
+
 
 
 
 function App() {
   return (
     <Router>
-      <div>
-        
+      <div className="app-container">
+       
         <Routes>
-          <Route path="/" element={<NavBar />} />
+          <Route path="/" element={<>
+            <NavBar />
+            <Intro />
+            <Slide/>
+            <Main />
+          
+            
+            
+          </>} />
           <Route path="/page" element={<Page />} />
-          <Route path="/Signup" element={<Signup/>} />
+          <Route path="/Signup" element={<Signup />} />
         </Routes>
       </div>
     </Router>
