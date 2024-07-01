@@ -24,10 +24,10 @@ function NavBar() {
               <Link to='/' className="nav-link active" aria-current="page" href="#">Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Find Work</a>
+              <Link to='/Work' className="nav-link" href="#">Find Work</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Find Talent</a>
+              <Link to='/Talent' className="nav-link" href="#">Find Talent</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Events</a>
