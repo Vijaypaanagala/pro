@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
 import Slide from "./components/Slide";
 
+import Last from "./components/Last";
 
 
 
@@ -23,7 +24,7 @@ function App() {
             <Intro />
             <Slide/>
             <Main />
-          
+            <Last/>
             
             
           </>} />
