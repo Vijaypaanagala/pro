@@ -21,22 +21,22 @@ function Slide() {
           <div className="carousel-item active">
             <img src={img2} className="d-block w-100 carousel-image" alt="Slide 1" />
             <div className="carousel-caption">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h5>Explore Diverse Freelancing Opportunities</h5>
+              <p>Discover a variety of freelance gigs that match your skills and passions.</p>
             </div>
           </div>
           <div className="carousel-item">
             <img src={imgs2} className="d-block w-100 carousel-image" alt="Slide 2" />
             <div className="carousel-caption">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
+              <h5>Empower Your Freelance Journey</h5>
+              <p>Connecting you with top freelance talent to achieve your project goals efficiently and effectively.</p>
             </div>
           </div>
           <div className="carousel-item">
             <img src={imgs3} className="d-block w-100 carousel-image" alt="Slide 3" />
             <div className="carousel-caption">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
+              <h5>Streamline Your Hiring Process</h5>
+              <p>Easily manage and hire top freelancers for your projects with our comprehensive platform.</p>
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ function Work() {
             </div>
           ))
         ) : (
-          <p>No data available</p>
+          <p>Loading...</p>
         )}
       </div>
     </div>
