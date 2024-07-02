@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { dataRef } from './Firebases';
 import "../Styles/Talent.css";
+import '../assets/back.jpg';
 import Work from './Work';
 
 function Talent() {
@@ -36,6 +37,8 @@ function Talent() {
   };
 
   return (
+    <div>
+      
     <div className="form-container">
       <input
         type="text"
@@ -82,6 +85,7 @@ function Talent() {
         </button>
       </center>
     </div>
+  </div>  
   );
 }
 
