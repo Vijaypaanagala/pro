@@ -1,5 +1,6 @@
 import React from 'react';
 import '../Styles/Main.css'
+import { Link } from 'react-router-dom';
 
 function Main() {
   return (
@@ -11,16 +12,16 @@ function Main() {
         <div className="browse-jobs-box browse-jobs-developers">
           <h2>For Students</h2>
           <p>Browse Skill Based Jobs</p>
-          <a type="button" className="btn btn-primary browse-jobs-button">
+          <Link to='/Work' type="button" className="btn btn-primary browse-jobs-button">
             Browse Jobs
-          </a>
+          </Link>
         </div>
         <div className="browse-jobs-box browse-jobs-employers">
           <h2>For Employers</h2>
           <p>Post your Jobs here</p>
-          <a type="button" className="btn btn-primary browse-jobs-button">
+          <Link to='/Talent' type="button" className="btn btn-primary browse-jobs-button">
             Add Job
-          </a>
+          </Link>
         </div>
       </div>
     </div>

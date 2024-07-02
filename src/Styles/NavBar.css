@@ -1,35 +1,101 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 .custom-navbar {
-  background-color: #f8f9fa; /* Light grey background for a modern look */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
-  position: fixed; /* Fixes the navbar at the top */
-  width: 100%; /* Ensures the navbar takes the full width of the screen */
-  top: 0; /* Positions the navbar at the top of the page */
-  z-index: 1000; /* Ensures the navbar stays above other content */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar-brand {
-  font-size: 1.5rem; /* Increase font size for brand logo */
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #4CBB17; /* Use brand color */
+  color: #4CBB17;
+  margin-right: 1rem;
 }
 
 .nav-link {
-  font-size: 1.1rem; /* Slightly larger font for better readability */
-  padding: 0.5rem 1rem; /* Add some padding for a better touch target */
-  color: #333; /* Dark text for good contrast */
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  color: #333;
   transition: color 0.3s ease;
-  margin-right: 1rem; /* Add margin to create space between links */
+  margin-right: 1rem;
 }
 
 .nav-link:hover {
-  color: #4CBB17; /* Hover effect to match the brand color */
+  color: #4CBB17;
+}
+
+.account-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  cursor: pointer;
+  /* Increase size of the icon */
+  font-size: 1.8rem; /* Adjust as needed */
+  width: 40px; /* Adjust width */
+  height: 40px; /* Adjust height */
+}
+
+.account-icon svg {
+  width: 100%; /* Ensure the SVG icon fills its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.account-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%; /* Center the dropdown horizontally */
+  transform: translateX(-50%); /* Move the dropdown half its width to the left */
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden; /* Clip the rounded corners */
+  display: none;
+  z-index: 1001;
+  width: 240px; /* Increased width for more content */
+}
+
+.account-icon:hover .account-dropdown {
+  display: block;
+}
+
+.account-dropdown-item {
+  font-size: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.account-dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.account-dropdown-item:first-child {
+  margin-top: 0;
+}
+
+.account-dropdown-item:last-child {
+  margin-bottom: 0;
+}
+
+.account-dropdown-header {
+  padding: 1rem;
+  background-color: #4CBB17;
+  color: #fff;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
 }
 
 .custom-btn {
-  background-color: #4CBB17; /* Brand color for sign-up button */
+  background-color: #4CBB17;
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
@@ -37,10 +103,9 @@
 }
 
 .custom-btn:hover {
-  background-color: #3aa414; /* Darker shade for hover effect */
+  background-color: #3aa414;
 }
 
-/* Ensure the rest of the content is not hidden behind the fixed navbar */
 body {
   padding-top: 70px; /* Adjust based on the height of your navbar */
 }

@@ -7,6 +7,7 @@
   padding: 100px;
   height: calc(100vh - 160px); 
   font-family: 'Roboto', sans-serif;/* Account for padding and potential header/footer */
+  margin-top: 30px;
  
 }
 

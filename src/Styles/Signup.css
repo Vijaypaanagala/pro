@@ -7,7 +7,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 85vh; /* Set main container height to 100vh */
+  height: 100vh; /* Set main container height to 100vh */
   width: 80%; /* Set main container width to 80% */
   margin: 0 auto; /* Center main container horizontally */
   padding: 20px;
@@ -23,7 +23,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 500px; /* Increased width */
-  height: 450px; /* Increased height */
+  height: 470px; /* Increased height */
 }
 
 /* Image Form */
@@ -33,12 +33,12 @@
   flex-direction: column;
   align-items: center;
   
-  height: 450px; /* Matched height with image form container */
+  height: 470px; /* Matched height with image form container */
 }
 
 .image-form img {
   width: 500px; /* Decreased width */
-  height: 450px; /* Decreased height */
+  height: 470px; /* Decreased height */
   border-radius: 10px;
   object-fit: cover;
 
@@ -53,7 +53,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 450px; /* Increased width */
-  height: 450px; /* Increased height */
+  height: 470px; /* Increased height */
 }
 
 /* Signup Form */
