@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
 import Slide from "./components/Slide";
 import Talent from "./components/Talent";
-
+import Pr from "./components/Pr";
 import Last from "./components/Last";
 import Work from "./components/Work";
 
@@ -25,6 +25,7 @@ function App() {
             <Slide/>
             <Main />
             <Last/>
+            <Pr/>
            
             
             
@@ -35,6 +36,7 @@ function App() {
             <>
             <NavBar />
             <Talent/>
+            
             </>
           } />
           <Route path="/Work" element={
