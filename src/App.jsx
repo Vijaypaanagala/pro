@@ -11,7 +11,9 @@ import Pr from "./components/Pr";
 import Work from "./components/Work";
 import Last from "./components/Last";
 import Profile from "./components/Profile";
-
+import MyJobs from "./components/Myjobs";
+import Events from "./components/Events";
+import Ef from "./components/Ef";
 function App() {
   return (
     <Router>
@@ -31,6 +33,10 @@ function App() {
           <Route path="/work" element={<Work />} />
           <Route path="/edit" element={<Pr />} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/temp" element={<MyJobs />} />
+          <Route path="/Events" element={<Events />} />
+          <Route path="/form" element={<Ef />} />
+
         </Routes>
       </div>
     </Router>
