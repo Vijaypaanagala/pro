@@ -1,23 +1,25 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Page from "./components/Page";
 import Signup from "./components/Signup";
 import Intro from "./components/Intro";
 import Main from "./components/Main";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './App.css'
 import Slide from "./components/Slide";
 import Talent from "./components/Talent";
+import Pr from "./components/Pr";
+import Work from "./components/Work";
 import Last from "./components/Last";
 import Work from "./components/Work";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Ab from "./components/Ab";
+
 
 
 function App() {
   return (
     <Router>
       <div className="app-container">
+        <NavBar />
         <Routes>
           <Route path="/" element={
             <>
@@ -26,7 +28,6 @@ function App() {
               <Slide/>
               <Main />
               <Last/>
-              
             </>
           } />
           <Route path="/page" element={<Page />} />
@@ -43,7 +44,6 @@ function App() {
               <Work/>
             </>
           } />
-          <Route path="/Ab" element={<Ab />} />
         </Routes>
       </div>
     </Router>

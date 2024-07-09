@@ -1,0 +1,88 @@
+/* Profile.css */
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+    margin-top: 130px;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .profile-header button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .profile-header button:hover {
+    background-color: #0056b3;
+  }
+  
+  .profile-section {
+    margin-bottom: 20px;
+  }
+  
+  .profile-section h2 {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+  }
+  
+  .profile-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  .profile-item:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .profile-item span {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .profile-item .label {
+    font-weight: bold;
+  }
+  
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .skill-tag {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .skill-tag:hover {
+    background-color: #0056b3;
+  }
+  
