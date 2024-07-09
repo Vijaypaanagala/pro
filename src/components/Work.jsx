@@ -9,17 +9,21 @@ function Work() {
     dataRef.ref().child("all").on('value', snapshot => {
       const data = snapshot.val();
       if (data) {
-        const getData = Object.values(data).reverse(); // Reverse to get recent jobs first
-        setAllValue(getData);
+        // Flatten the data structure
+        const allPosts = [];
+        Object.values(data).forEach(userPosts => {
+          Object.values(userPosts).forEach(post => {
+            allPosts.push(post);
+          });
+        });
+        setAllValue(allPosts.reverse()); // Reverse to get recent jobs first
       }
     });
   }, []);
 
   return (
     <div className="work-container">
-      
       <div className="all-data">
-      
         {allValue.length > 0 ? (
           allValue.map((item, index) => (
             <div key={index} className="data-item">

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth"; // Import necessary Firebase auth functions
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { FiUser } from "react-icons/fi";
 import "../Styles/NavBar.css";
-import { FiUser } from "react-icons/fi"; // Import profile icon from react-icons
 
 function NavBar() {
   const [user, setUser] = useState(null);
   const [showUserDetails, setShowUserDetails] = useState(false);
   const navigate = useNavigate();
-  const auth = getAuth(); // Initialize Firebase auth instance
+  const auth = getAuth();
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -24,8 +25,8 @@ function NavBar() {
 
   const handleLogout = async () => {
     try {
-      await signOut(auth); // Sign out the user
-      navigate("/"); // Redirect to home page ("/") after logout
+      await signOut(auth);
+      navigate("/");
     } catch (error) {
       console.error("Logout error:", error);
     }
@@ -35,10 +36,23 @@ function NavBar() {
     setShowUserDetails(!showUserDetails);
   };
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setShowUserDetails(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary custom-navbar">
       <div className="container-fluid">
-        <NavLink to="/" className="navbar-brand">Logo</NavLink>
+        <Link to="/" className="navbar-brand">Logo</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -53,35 +67,38 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink to='/' className="nav-link" activeClassName="active" aria-current="page">Home</NavLink>
+              <Link to="/" className="nav-link active" aria-current="page">Home</Link>
             </li>
             <li className="nav-item">
-              <NavLink to='/Work' className="nav-link" activeClassName="active">Find Work</NavLink>
+              <Link to="/work" className="nav-link">Find Work</Link>
             </li>
             <li className="nav-item">
-              <NavLink to='/Talent' className="nav-link" activeClassName="active">Find Talent</NavLink>
+              <Link to="/talent" className="nav-link">Find Talent</Link>
             </li>
             <li className="nav-item">
-              <NavLink to='/Events' className="nav-link" activeClassName="active">Events</NavLink>
+              <a className="nav-link">Events</a>
             </li>
           </ul>
           <div className="d-flex align-items-center">
             {user ? (
-              <div className="dropdown">
+              <div className="dropdown" ref={dropdownRef}>
                 <div className="profile-icon" onClick={toggleUserDetails}>
-                  <FiUser  style={{ fontSize: "23px" }}/>
+                  <FiUser style={{ fontSize: "23px" }} />
                 </div>
                 {showUserDetails && (
                   <div className="dropdown-menu dropdown-menu-end show" style={{ right: "0", left: "auto" }}>
-                    <div className="dropdown-item">{user.email}</div>
+                    
+                    <Link to="/Profile" className="dropdown-item">Profile</Link>
+                    <Link to="/temp" className="dropdown-item">My Jobs</Link>
+                    
                     <button className="dropdown-item" onClick={handleLogout}>Logout</button>
                   </div>
                 )}
               </div>
             ) : (
               <>
-                <NavLink to="/Page" className="nav-link" activeClassName="active">Login</NavLink>
-                <NavLink to="/Signup" className="btn btn-success custom-btn">Sign up</NavLink>
+                <Link to="/page" className="nav-link">Login</Link>
+                <Link to="/signup" type="button" className="btn btn-success custom-btn">Sign up</Link>
               </>
             )}
           </div>

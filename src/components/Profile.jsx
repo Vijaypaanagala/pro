@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { dataRef } from './Firebases';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Link } from "react-router-dom";
 import '../Styles/Profile.css';
 
 function Profile() {
@@ -37,27 +38,32 @@ function Profile() {
   return (
     <div className="profile-container">
       {userData ? (
-        <div className="profile-details">
-          <h2>Profile Details</h2>
-          <p><strong>First Name:</strong> {userData.fname}</p>
-          <p><strong>Last Name:</strong> {userData.lname}</p>
-          <p><strong>Additional Name:</strong> {userData.aname}</p>
-          <p><strong>Email:</strong> {userData.email}</p>
-          <p><strong>College:</strong> {userData.college}</p>
-          <p><strong>Location:</strong> {userData.location}</p>
-          <p><strong>Experience:</strong> {userData.exp}</p>
-          <p><strong>Achievements:</strong> {userData.ach}</p>
-          <div className="profile-skills">
-            <strong>Skills:</strong>
-            <ul>
-              {userData.skills && userData.skills.map((skill, index) => (
-                <li key={index}>{skill}</li>
-              ))}
-            </ul>
+        <>
+          <div className="profile-details">
+            <h2>Profile Details</h2>
+            <p><strong>First Name:</strong> {userData.fname}</p>
+            <p><strong>Last Name:</strong> {userData.lname}</p>
+            <p><strong>Additional Name:</strong> {userData.aname}</p>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>College:</strong> {userData.college}</p>
+            <p><strong>Location:</strong> {userData.location}</p>
+            <p><strong>Experience:</strong> {userData.exp}</p>
+            <p><strong>Achievements:</strong> {userData.ach}</p>
+            <div className="profile-skills">
+              <strong>Skills:</strong>
+              <ul>
+                {userData.skills && userData.skills.map((skill, index) => (
+                  <li key={index} className="skill-tag">{skill}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
+          <Link to="/edit" type="button" className="edit-btn">
+            Edit
+          </Link>
+        </>
       ) : (
-        <p>Loading profile...</p>
+        <p>Loading ...</p>
       )}
     </div>
   );

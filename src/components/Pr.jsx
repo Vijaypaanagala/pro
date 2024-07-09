@@ -88,7 +88,7 @@ function Pr() {
     };
 
     if (user) {
-      dataRef.ref(`users/${user.uid}`).set(userData)
+      dataRef.ref(`users/${user.uid}`).set(userData) // Corrected template string usage
         .then(() => {
           console.log("Data added successfully");
           // Clear all fields after successful save
@@ -202,9 +202,7 @@ function Pr() {
           </div>
 
           <div className="button-container-pr">
-            <button type="button" className="l-btn-pr">
-              Edit
-            </button>
+            
             <button type="button" className="l-btn-pr" onClick={AddtoFire}>
               Save
             </button>

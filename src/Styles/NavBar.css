@@ -3,6 +3,7 @@
 
 .custom-navbar {
   background-color: #f8f9fa;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
   position: fixed;
   width: 100%;
@@ -29,12 +30,6 @@
   color: #4CBB17;
 }
 
-/* Add styles for active nav-link */
-.nav-link.active {
-  color: #4CBB17; /* Active color */
-  font-weight: bold; /* Optional: make the text bold */
-}
-
 .account-icon {
   position: relative;
   display: flex;
@@ -42,10 +37,9 @@
   justify-content: center;
   margin-left: auto;
   cursor: pointer;
-  /* Increase size of the icon */
-  font-size: 1.8rem; /* Adjust as needed */
-  width: 40px; /* Adjust width */
-  height: 40px; /* Adjust height */
+  font-size: 1.8rem;
+  width: 40px;
+  height: 40px;
 }
 
 .account-icon svg {
@@ -62,14 +56,9 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid #ccc;
   border-radius: 8px;
-  overflow: hidden; /* Clip the rounded corners */
-  display: none;
+  overflow: hidden;
   z-index: 1001;
-  width: 240px; /* Increased width for more content */
-}
-
-.account-icon:hover .account-dropdown {
-  display: block;
+  width: 240px;
 }
 
 .account-dropdown-item {

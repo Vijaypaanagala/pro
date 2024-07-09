@@ -10,10 +10,9 @@ import Talent from "./components/Talent";
 import Pr from "./components/Pr";
 import Work from "./components/Work";
 import Last from "./components/Last";
-import Work from "./components/Work";
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
-
+import Profile from "./components/Profile";
+import Myjobs from "./components/Myjobs";
+import Ab from "./components/Ab";
 
 function App() {
   return (
@@ -21,29 +20,20 @@ function App() {
       <div className="app-container">
         <NavBar />
         <Routes>
-          <Route path="/" element={
-            <>
-              <NavBar />
-              <Intro />
-              <Slide/>
-              <Main />
-              <Last/>
-            </>
-          } />
+          <Route path="/" element={<>
+            <Intro />
+            <Slide />
+            <Main />
+            <Last />
+          </>} />
           <Route path="/page" element={<Page />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/talent" element={
-            <>
-              <NavBar />
-              <Talent/>
-            </>
-          } />
-          <Route path="/work" element={
-            <>
-              <NavBar />
-              <Work/>
-            </>
-          } />
+          <Route path="/talent" element={<Talent />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/edit" element={<Pr />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/temp" element={<Myjobs />} />  {/* Changed to lowercase 'profile' */}
+          <Route path="/Ab" element={<Ab />} />
         </Routes>
       </div>
     </Router>
