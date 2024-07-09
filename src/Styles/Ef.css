@@ -1,0 +1,66 @@
+/* Container styling */
+.cont {
+    max-width: 500px;
+    margin: 50px auto; /* Centering the container with top margin */
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Heading styling */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333333;
+}
+
+/* Form styling */
+form {
+    display: grid;
+    gap: 15px;
+}
+
+/* Label styling */
+label {
+    font-weight: bold;
+    color: #555555;
+}
+
+/* Input field styling */
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+    outline: none;
+    border-color: #85b7d9; /* Focus color */
+}
+
+/* Button styling */
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Full width button */
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}

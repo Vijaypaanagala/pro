@@ -76,7 +76,8 @@ function NavBar() {
               <Link to="/talent" className="nav-link">Find Talent</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link">Events</a>
+              <Link to="/Events" className="nav-link">Events</Link>
+              
             </li>
           </ul>
           <div className="d-flex align-items-center">

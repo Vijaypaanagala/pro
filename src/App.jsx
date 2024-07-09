@@ -11,7 +11,8 @@ import Pr from "./components/Pr";
 import Work from "./components/Work";
 import Last from "./components/Last";
 import Profile from "./components/Profile";
-
+import Events from "./components/Events";
+import Ef from "./components/Ef";
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
             <Slide />
             <Main />
             <Last />
+            
           </>} />
           <Route path="/page" element={<Page />} />
           <Route path="/signup" element={<Signup />} />
@@ -30,6 +32,9 @@ function App() {
           <Route path="/work" element={<Work />} />
           <Route path="/edit" element={<Pr />} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="Events" element={<><Events/>
+            </>} />
+            <Route path="/form" element={<Ef />} />
         </Routes>
       </div>
     </Router>
