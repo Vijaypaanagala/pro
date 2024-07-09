@@ -4,6 +4,7 @@ import "../Styles/Page.css";
 import log from '../assets/log.png';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./Firebases";
+import { Link } from "react-router-dom";
 
 function Page() {
   const [email, setEmail] = useState("");
@@ -50,7 +51,7 @@ function Page() {
             value={email}
             onChange={handleEmailChange}
             placeholder="Email"
-            className="input-field"
+            className="inputs-field"
             required
           />
           <input
@@ -58,12 +59,15 @@ function Page() {
             value={password}
             onChange={handlePasswordChange}
             placeholder="Password"
-            className="input-field"
+            className="inputs-field"
             required
           />
           <button type="button" className="login-btn" onClick={handleLogin}>
             Login
           </button>
+          <div className="signup-link" style={{marginTop:"20px"}}>
+            <Link to="/Signup" >Create a new Account? SignUp</Link>
+          </div>
         </div>
       </div>
     </div>

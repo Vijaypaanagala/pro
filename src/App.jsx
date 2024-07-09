@@ -11,7 +11,7 @@ import Talent from "./components/Talent";
 import Last from "./components/Last";
 import Work from "./components/Work";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import Ab from "./components/Ab";
 
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
               <Slide/>
               <Main />
               <Last/>
+              
             </>
           } />
           <Route path="/page" element={<Page />} />
@@ -42,6 +43,7 @@ function App() {
               <Work/>
             </>
           } />
+          <Route path="/Ab" element={<Ab />} />
         </Routes>
       </div>
     </Router>

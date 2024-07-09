@@ -35,7 +35,7 @@
 .data-item:hover {
   transform: translateY(-5px); /* Increase translation for a more noticeable effect */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  filter: none; /* Remove blur effect on hover */
+  /* Remove blur effect on hover */
 }
 
 .data-item h3 {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth"; // Import necessary Firebase auth functions
 import "../Styles/NavBar.css";
 import { FiUser } from "react-icons/fi"; // Import profile icon from react-icons
@@ -38,7 +38,7 @@ function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary custom-navbar">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand">Logo</Link>
+        <NavLink to="/" className="navbar-brand">Logo</NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -53,16 +53,16 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to='/' className="nav-link active" aria-current="page">Home</Link>
+              <NavLink to='/' className="nav-link" activeClassName="active" aria-current="page">Home</NavLink>
             </li>
             <li className="nav-item">
-              <Link to='/Work' className="nav-link">Find Work</Link>
+              <NavLink to='/Work' className="nav-link" activeClassName="active">Find Work</NavLink>
             </li>
             <li className="nav-item">
-              <Link to='/Talent' className="nav-link">Find Talent</Link>
+              <NavLink to='/Talent' className="nav-link" activeClassName="active">Find Talent</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link">Events</a>
+              <NavLink to='/Events' className="nav-link" activeClassName="active">Events</NavLink>
             </li>
           </ul>
           <div className="d-flex align-items-center">
@@ -80,8 +80,8 @@ function NavBar() {
               </div>
             ) : (
               <>
-                <Link to="/Page" className="nav-link">Login</Link>
-                <Link to="/Signup" type="button" className="btn btn-success custom-btn">Sign up</Link>
+                <NavLink to="/Page" className="nav-link" activeClassName="active">Login</NavLink>
+                <NavLink to="/Signup" className="btn btn-success custom-btn">Sign up</NavLink>
               </>
             )}
           </div>
