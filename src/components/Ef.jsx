@@ -95,7 +95,7 @@ function Ef() {
                     <input
                         type="text"
                         value={timings}
-                        placeholder="Timings  Eg: 10.00AM  to 5.00PM"
+                        placeholder="Timings"
                         onChange={(e) => setTimings(e.target.value)}
                         required
                     />
@@ -105,7 +105,7 @@ function Ef() {
                     <input
                         type="text"
                         value={eventCoordinators}
-                        placeholder="Event Coordinators or volunteers"
+                        placeholder="Event Coordinators"
                         onChange={(e) => setEventCoordinators(e.target.value)}
                         required
                     />
