@@ -1,17 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Styles/Page.css";
 import log from '../assets/log.png';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./Firebases";
 
 function Page() {
-  const [name, setName] = useState("");
-  const [pass, setPass] = useState("");
-  
-  const onChange = (event) => {
-    setName(event.target.value);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate(); // useNavigate instead of useHistory for react-router-dom v6
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
-  const onPasswordChange = (event) => {
-    setPass(event.target.value);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setError("Please enter all details");
+      return;
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setEmail(""); // Clear email field
+      setPassword(""); // Clear password field
+      setError("");
+      navigate("/"); // Redirect to home page
+    } catch (error) {
+      setError("Invalid Email or Password");
+    }
   };
 
   return (
@@ -22,29 +44,28 @@ function Page() {
       <div className="login-form-container">
         <div className="login-form">
           <h2>Login</h2>
+          {error && <p className="error" style={{color:"red"}}>{error}</p>}
           <input
-            type="text"
-            value={name}
-            onChange={onChange}
-            placeholder="Username"
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+            placeholder="Email"
             className="input-field"
+            required
           />
           <input
             type="password"
-            value={pass}
-            onChange={onPasswordChange}
+            value={password}
+            onChange={handlePasswordChange}
             placeholder="Password"
             className="input-field"
+            required
           />
-          <button type="button" className="login-btn">
+          <button type="button" className="login-btn" onClick={handleLogin}>
             Login
           </button>
         </div>
       </div>
-      <div>
-        
-      </div>
-      
     </div>
   );
 }
