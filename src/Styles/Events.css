@@ -1,0 +1,25 @@
+.divs {
+    margin-top: 100px;
+}
+
+.login-b {
+    background-color: #4CBB17; /* Blue background color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding inside the button */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Display as inline-block */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Margin between buttons */
+    cursor: pointer; /* Cursor pointer */
+    position: absolute; /* Position absolute to position relative to the nearest positioned ancestor */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    margin-top: 70px;
+    border-radius: 10px;
+}
+
+.login-b:hover {
+    background-color: #388e0e; /* Darker blue background on hover */
+}

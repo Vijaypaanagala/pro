@@ -11,8 +11,6 @@ import Pr from "./components/Pr";
 import Work from "./components/Work";
 import Last from "./components/Last";
 import Profile from "./components/Profile";
-import Myjobs from "./components/Myjobs";
-import Ab from "./components/Ab";
 
 function App() {
   return (
@@ -25,15 +23,14 @@ function App() {
             <Slide />
             <Main />
             <Last />
+            
           </>} />
           <Route path="/page" element={<Page />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/talent" element={<Talent />} />
           <Route path="/work" element={<Work />} />
           <Route path="/edit" element={<Pr />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/temp" element={<Myjobs />} />  {/* Changed to lowercase 'profile' */}
-          <Route path="/Ab" element={<Ab />} />
+          <Route path="/Profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>
