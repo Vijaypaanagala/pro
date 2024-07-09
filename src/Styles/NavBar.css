@@ -37,34 +37,28 @@
   justify-content: center;
   margin-left: auto;
   cursor: pointer;
-  /* Increase size of the icon */
-  font-size: 1.8rem; /* Adjust as needed */
-  width: 40px; /* Adjust width */
-  height: 40px; /* Adjust height */
+  font-size: 1.8rem;
+  width: 40px;
+  height: 40px;
 }
 
 .account-icon svg {
-  width: 100%; /* Ensure the SVG icon fills its container */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
 }
 
 .account-dropdown {
   position: absolute;
   top: calc(100% + 10px);
-  left: 50%; /* Center the dropdown horizontally */
-  transform: translateX(-50%); /* Move the dropdown half its width to the left */
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid #ccc;
   border-radius: 8px;
-  overflow: hidden; /* Clip the rounded corners */
-  display: none;
+  overflow: hidden;
   z-index: 1001;
-  width: 240px; /* Increased width for more content */
-}
-
-.account-icon:hover .account-dropdown {
-  display: block;
+  width: 240px;
 }
 
 .account-dropdown-item {
@@ -76,14 +70,6 @@
 
 .account-dropdown-item:hover {
   background-color: #f0f0f0;
-}
-
-.account-dropdown-item:first-child {
-  margin-top: 0;
-}
-
-.account-dropdown-item:last-child {
-  margin-bottom: 0;
 }
 
 .account-dropdown-header {
@@ -107,5 +93,5 @@
 }
 
 body {
-  padding-top: 70px; /* Adjust based on the height of your navbar */
+  padding-top: 70px;
 }

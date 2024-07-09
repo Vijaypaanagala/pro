@@ -16,7 +16,7 @@ function Last() {
                     Company
                   </h6>
                   <p>
-                    
+                  We aim to address students financial challenges by offering a platform where faculty and students can post tasks
                   </p>
                 </div>
 
