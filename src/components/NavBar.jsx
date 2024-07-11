@@ -80,7 +80,7 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <Link to="/livechat" className="nav-link">
-                <FiMessageCircle style={{ fontSize: "23px" }} />
+                <FiMessageCircle style={{ fontSize: "23px", marginLeft: "10px", marginRight: "10px" }} />
               </Link>
             </li>
           </ul>
