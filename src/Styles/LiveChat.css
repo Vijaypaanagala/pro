@@ -1,0 +1,11 @@
+/* LiveChat.css */
+.livechat-container {
+  padding: 2rem;
+  margin-top: 60px;
+}
+
+.livechat-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+
+}

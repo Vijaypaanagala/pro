@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-import { FiUser } from "react-icons/fi";
+import { FiUser, FiMessageCircle } from "react-icons/fi";
 import "../Styles/NavBar.css";
 
 function NavBar() {
@@ -76,8 +76,12 @@ function NavBar() {
               <Link to="/talent" className="nav-link">Find Talent</Link>
             </li>
             <li className="nav-item">
-              <Link to="/Events" className="nav-link">Events</Link>
-              
+              <Link to="/events" className="nav-link">Events</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/livechat" className="nav-link">
+                <FiMessageCircle style={{ fontSize: "23px" }} />
+              </Link>
             </li>
           </ul>
           <div className="d-flex align-items-center">
@@ -88,17 +92,15 @@ function NavBar() {
                 </div>
                 {showUserDetails && (
                   <div className="dropdown-menu dropdown-menu-end show" style={{ right: "0", left: "auto" }}>
-                    
-                    <Link to="/Profile" className="dropdown-item">Profile</Link>
-                    <Link to="/temp" className="dropdown-item">My Jobs</Link>
-                    
+                    <Link to="/profile" className="dropdown-item">Profile</Link>
+                    <Link to="/myjobs" className="dropdown-item">My Jobs</Link>
                     <button className="dropdown-item" onClick={handleLogout}>Logout</button>
                   </div>
                 )}
               </div>
             ) : (
               <>
-                <Link to="/page" className="nav-link">Login</Link>
+                <Link to="/login" className="nav-link">Login</Link>
                 <Link to="/signup" type="button" className="btn btn-success custom-btn">Sign up</Link>
               </>
             )}

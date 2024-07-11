@@ -95,3 +95,34 @@
 body {
   padding-top: 70px;
 }
+
+/* NavBar.css */
+.custom-navbar {
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.profile-icon {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.custom-btn {
+  margin-left: 10px;
+}
