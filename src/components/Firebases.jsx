@@ -1,5 +1,6 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
+import 'firebase/compat/storage'; // Import storage module for handling images
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
@@ -12,10 +13,18 @@ const firebaseConfig = {
   appId: "1:79060418023:web:99ca23b1636bfd5ff99142",
   measurementId: "G-CQV11XS7F5"
 };
-firebase.initializeApp(firebaseConfig);
-export const dataRef=firebase.database();
-const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(app);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app(); // if already initialized, use that one
+}
+
+const database = firebase.database();
+const storage = firebase.storage();
+
+export const dataRef = database;
+export const storageRef = storage.ref(); // Reference to the Firebase Storage
+export const auth = getAuth();
 
 export default firebase;
