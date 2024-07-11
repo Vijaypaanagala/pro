@@ -11,6 +11,7 @@ function Intro() {
         <button type="button" className="intro-button">
           Get Started Today
         </button>
+       
       </div>
       <img src={img1} className="intro-image" alt="Freelance Services" />
     </div>

@@ -14,6 +14,9 @@ import Profile from "./components/Profile";
 import MyJobs from "./components/Myjobs";
 import Events from "./components/Events";
 import Ef from "./components/Ef";
+import Ab from "./components/Ab";
+import LiveChat from "./components/LiveChat";
+
 function App() {
   return (
     <Router>
@@ -25,7 +28,7 @@ function App() {
             <Slide />
             <Main />
             <Last />
-            
+           
           </>} />
           <Route path="/page" element={<Page />} />
           <Route path="/signup" element={<Signup />} />
@@ -36,7 +39,8 @@ function App() {
           <Route path="/temp" element={<MyJobs />} />
           <Route path="/Events" element={<Events />} />
           <Route path="/form" element={<Ef />} />
-
+          <Route path="/Ab" element={<Ab />} />
+          <Route path="/livechat" element={<LiveChat />} />
         </Routes>
       </div>
     </Router>
