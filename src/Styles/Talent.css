@@ -16,7 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 150px;
+  margin-top: 120px;
 }
 
 .input-field,
@@ -35,7 +35,7 @@ body {
   resize: vertical; /* Allows the user to resize the textarea vertically */
 }
 
-.apply-btn {
+.applys {
   width: 100%; /* Adjusted width */
   padding: 10px;
   background-color: #4CBB17;
@@ -47,6 +47,6 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.apply-btn:hover {
+.applys:hover {
   background-color: #45a049;
 }
