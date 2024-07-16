@@ -10,6 +10,7 @@ function Work() {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
   const [userEmail, setUserEmail] = useState('');
+  const [appliedJobs, setAppliedJobs] = useState([]);
   const auth = getAuth();
 
   useEffect(() => {
@@ -28,7 +29,10 @@ function Work() {
               });
             });
           });
-          setJobListings(allPosts.reverse()); // Reverse to show latest posts first
+
+          // Filter out jobs that the user has already applied for
+          const filteredPosts = allPosts.filter(job => !appliedJobs.includes(job.jobId));
+          setJobListings(filteredPosts.reverse()); // Reverse to show latest posts first
         } else {
           setJobListings([]);
         }
@@ -40,15 +44,23 @@ function Work() {
 
     // Clean up function to unsubscribe from Firebase
     return () => dataRef.ref('all').off();
-  }, []);
+  }, [appliedJobs]);
 
   useEffect(() => {
     // Check if user is authenticated
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserEmail(user.email);
+
+        // Fetch user's applied jobs
+        const sanitizedEmail = user.email.replace(/\./g, ',');
+        dataRef.ref(`users/${sanitizedEmail}/appliedJobs`).on('value', (snapshot) => {
+          const appliedJobsData = snapshot.val() || [];
+          setAppliedJobs(appliedJobsData);
+        });
       } else {
         setUserEmail('');
+        setAppliedJobs([]);
       }
     });
 
@@ -79,7 +91,26 @@ function Work() {
           return applicants;
         });
 
+        // Add job to user's applied jobs list
+        const sanitizedEmail = userEmail.replace(/\./g, ',');
+        const userRef = dataRef.ref(`users/${sanitizedEmail}/appliedJobs`);
+        await userRef.transaction((appliedJobs) => {
+          if (!appliedJobs) {
+            appliedJobs = [];
+          }
+          if (!appliedJobs.includes(jobId)) {
+            appliedJobs.push(jobId);
+          }
+          return appliedJobs;
+        });
+
         console.log("Application submitted successfully!");
+
+        // Remove the job from the current job listings
+        setJobListings(prevJobListings =>
+          prevJobListings.filter(job => job.jobId !== jobId)
+        );
+
       } catch (error) {
         console.error("Error submitting application: ", error);
       } finally {
@@ -92,17 +123,6 @@ function Work() {
   const handleCancel = () => {
     setShowConfirmation(false);
     setSelectedJob(null);
-  };
-
-  const handleJobUpdate = (updatedJob) => {
-    // Update job listings in state after editing
-    const updatedJobListings = jobListings.map(job => {
-      if (job.jobId === updatedJob.jobId) {
-        return updatedJob;
-      }
-      return job;
-    });
-    setJobListings(updatedJobListings);
   };
 
   if (loading) {
