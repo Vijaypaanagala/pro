@@ -57,7 +57,7 @@ function Last() {
                     <a href="#!" className="text-white">Reviews</a>
                   </p>
                   <p>
-                    <a href="#!" className="text-white">Help</a>
+                    <Link to="/Help" className="text-white">Help</Link>
                   </p>
                 </div>
 

@@ -15,6 +15,7 @@ import MyJobs from "./components/Myjobs";
 import Events from "./components/Events";
 import Ef from "./components/Ef";
 import Ab from "./components/Ab";
+import Help from "./components/Help";
 import LiveChat from "./components/LiveChat";
 import ViewApplicants from "./components/ViewApplicants";
 // import ApplicantProfile from "./components/ApplicantProfile";
@@ -44,6 +45,7 @@ function App() {
           <Route path="/Events" element={<Events />} />
           <Route path="/form" element={<Ef />} />
           <Route path="/Ab" element={<Ab />} />
+          <Route path="/Help" element = {<Help />} />
           <Route path="/livechat" element={<LiveChat />} />
           <Route path="/myjobs/:postId/applicants" element={<ViewApplicants />} />
           {/* <Route path="/applicantprofile/:id" element={<ApplicantProfile />} /> */}
