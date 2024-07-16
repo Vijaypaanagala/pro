@@ -78,11 +78,11 @@ function NavBar() {
             <li className="nav-item">
               <Link to="/events" className="nav-link">Events</Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/livechat" className="nav-link">
                 <FiMessageCircle style={{ fontSize: "23px", marginLeft: "10px", marginRight: "10px" }} />
               </Link>
-            </li>
+            </li> */}
           </ul>
           <div className="d-flex align-items-center">
             {user ? (

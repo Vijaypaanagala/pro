@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { dataRef } from './Firebases';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../Styles/Profile.css';
 
 function Profile() {
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   const auth = getAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -20,6 +22,7 @@ function Profile() {
             if (snapshot.exists()) {
               setUserData(snapshot.val());
             } else {
+              setShowPopup(true);
               console.log("No data available");
             }
           })
@@ -34,6 +37,10 @@ function Profile() {
 
     return () => unsubscribe();
   }, [auth]);
+
+  const handleCreateProfile = () => {
+    navigate('/edit');
+  };
 
   return (
     <div className="profile-container">
@@ -64,6 +71,12 @@ function Profile() {
         </>
       ) : (
         <p>Loading ...</p>
+      )}
+      {showPopup && (
+        <div className="profile-empty-popup">
+          <p>No profile data found. Please create your profile.</p>
+          <button onClick={handleCreateProfile}>Create Profile</button>
+        </div>
       )}
     </div>
   );

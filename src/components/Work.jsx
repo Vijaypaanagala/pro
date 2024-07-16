@@ -1,40 +1,92 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { dataRef } from './Firebases';
-import "../Styles/Work.css";
-import Popup from './Popup';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Popup from './Popup'; // Assuming you have a Popup component defined
+import "../Styles/Work.css"; // Ensure you have appropriate styling
 
 function Work() {
-  const [allValue, setAllValue] = useState([]);
+  const [jobListings, setJobListings] = useState([]);
+  const [loading, setLoading] = useState(true); // State for loading indicator
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
+  const [userEmail, setUserEmail] = useState('');
+  const auth = getAuth();
 
   useEffect(() => {
+    // Fetch job listings from Firebase
     const fetchData = () => {
-      dataRef.ref().child("all").on('value', snapshot => {
+      dataRef.ref('all').on('value', (snapshot) => {
         const data = snapshot.val();
         if (data) {
           const allPosts = [];
-          Object.values(data).forEach(userPosts => {
-            Object.values(userPosts).forEach(post => {
-              allPosts.push(post);
+          Object.keys(data).forEach((userEmail) => {
+            Object.keys(data[userEmail]).forEach((jobId) => {
+              allPosts.push({
+                ...data[userEmail][jobId],
+                jobId,
+                email: userEmail
+              });
             });
           });
-          setAllValue(allPosts.reverse());
+          setJobListings(allPosts.reverse()); // Reverse to show latest posts first
         } else {
-          setAllValue([]);
+          setJobListings([]);
         }
+        setLoading(false); // Set loading to false after data is fetched
       });
     };
 
     fetchData();
 
-    // Cleanup function to unsubscribe from the dataRef when the component unmounts
-    return () => dataRef.ref().child("all").off();
+    // Clean up function to unsubscribe from Firebase
+    return () => dataRef.ref('all').off();
   }, []);
 
-  const handleApplyNow = (job) => {
-    setSelectedJob(job);
-    setShowConfirmation(true);
+  useEffect(() => {
+    // Check if user is authenticated
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserEmail(user.email);
+      } else {
+        setUserEmail('');
+      }
+    });
+
+    return () => unsubscribe();
+  }, [auth]);
+
+  const handleApply = (job) => {
+    if (userEmail) {
+      setSelectedJob(job);
+      setShowConfirmation(true);
+    }
+  };
+
+  const handleConfirm = async () => {
+    if (userEmail && selectedJob) {
+      try {
+        // Update job with applicant's email
+        const jobId = selectedJob.jobId;
+        const jobRef = dataRef.ref(`all/${selectedJob.email}/${jobId}/applicants`);
+
+        await jobRef.transaction((applicants) => {
+          if (!applicants) {
+            applicants = [];
+          }
+          if (!applicants.includes(userEmail)) {
+            applicants.push(userEmail);
+          }
+          return applicants;
+        });
+
+        console.log("Application submitted successfully!");
+      } catch (error) {
+        console.error("Error submitting application: ", error);
+      } finally {
+        setShowConfirmation(false);
+        setSelectedJob(null);
+      }
+    }
   };
 
   const handleCancel = () => {
@@ -42,30 +94,26 @@ function Work() {
     setSelectedJob(null);
   };
 
-  const handleConfirm = () => {
-    setShowConfirmation(false);
-    setSelectedJob(null);
-    // Add your job application logic here
-  };
+  if (loading) {
+    return (
+      <div className="loading">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="work-container">
-      <div className="all-data">
-        {allValue.length > 0 ? (
-          allValue.map((item, index) => (
-            <div key={index} className="data-item">
-              <h3>{item.title}</h3>
-              <p><strong>Skills:</strong> {item.skills}</p>
-              <p><strong>Period:</strong> {item.period}</p>
-              <p><strong>Stipend:</strong> {item.stipend}</p>
-              <p><strong>Description:</strong> {item.description}</p>
-              <button type="button" className="apply-btn" onClick={() => handleApplyNow(item)}>Apply Now</button>
-            </div>
-          ))
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
+    <div className="all-data">
+      {jobListings.map((job, index) => (
+        <div key={index} className="data-item">
+          <h3>{job.title}</h3>
+          <p><strong>Skills:</strong> {job.skills}</p>
+          <p><strong>Period:</strong> {job.period}</p>
+          <p><strong>Stipend:</strong> {job.stipend}</p>
+          <p><strong>Description:</strong> {job.description}</p>
+          <button className="apply-btn" onClick={() => handleApply(job)}>Apply</button>
+        </div>
+      ))}
       {showConfirmation && (
         <Popup
           job={selectedJob}
