@@ -32,10 +32,18 @@
 }
 
 /* Job item title styles */
-.my-jobs-item h3 {
+.my-jobs-item h4 {
   text-align: left; /* Align job titles to the left */
   color: #000000; /* Bold black text */
   font-weight: bold; /* Bold text */
+}
+
+/* Buttons container */
+.my-jobs-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center align buttons vertically */
+  margin-top: 10px;
 }
 
 /* Button styles */
@@ -51,6 +59,16 @@
 
 .my-jobs-btn:hover {
   background-color: #3a9611; /* Darker green on hover */
+}
+
+/* Specific styles for delete button */
+.delete-btn {
+  background-color: #d9534f; 
+  margin-left:10px;
+}
+
+.delete-btn:hover {
+  background-color: #c9302c; /* Darker red on hover */
 }
 
 /* Responsive adjustments */

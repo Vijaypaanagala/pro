@@ -45,6 +45,20 @@ function MyJobs() {
     navigate(`/myjobs/${jobId}/applicants`, { state: { jobId, jobTitle } }); // Redirect to ViewApplicants with jobId and jobTitle in URL
   };
 
+  const handleDeleteJob = (jobId) => {
+    const sanitizedEmail = userEmail.replace(/\./g, ',');
+    const jobRef = dataRef.ref(`all/${sanitizedEmail}/${jobId}`);
+    
+    jobRef.remove()
+      .then(() => {
+        // Remove the job from the local state
+        setUserPosts(prevPosts => prevPosts.filter(post => post.jobId !== jobId));
+      })
+      .catch(error => {
+        console.error("Error deleting job: ", error);
+      });
+  };
+
   if (loading) {
     return <p className='loading'>Loading...</p>; 
   }
@@ -67,6 +81,13 @@ function MyJobs() {
                 onClick={() => handleViewApplicants(item.jobId, item.title)}
               >
                 View Applicants
+              </button>
+              <button 
+                type="button" 
+                className="my-jobs-btn delete-btn" 
+                onClick={() => handleDeleteJob(item.jobId)}
+              >
+                Delete
               </button>
             </div>
           ))
