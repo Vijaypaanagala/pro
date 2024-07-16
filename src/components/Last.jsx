@@ -21,9 +21,7 @@ function Last() {
                   <h6 className="text-uppercase mb-4 font-weight-bold">
                     Company
                   </h6>
-                  <p>
-                    
-                  </p>
+                  <p></p>
                 </div>
 
                 <hr className="w-100 clearfix d-md-none" />
@@ -88,6 +86,11 @@ function Last() {
                 </div>
               </div>
             </section>
+          </div>
+
+          <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+            © 2024 Copyright | 
+            <a className="text-white" href="#"> College Hustle</a>
           </div>
         </footer>
       </div>
