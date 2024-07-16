@@ -105,3 +105,23 @@
   background-color: #388e0e;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed; /* Position it fixed to cover the entire screen */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(255, 255, 255, 0.8); /* Light background with some transparency */
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  z-index: 999; /* Higher z-index to appear on top of everything */
+}
+
+/* Loading Spinner Text */
+.loading-spinner {
+  font-size: 24px; /* Font size for the loading text */
+  font-weight: bold; /* Bold text */
+  color: #070806; /* Green color for consistency */
+}

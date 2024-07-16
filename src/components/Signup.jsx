@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import log from '../assets/singn.png';
 import "../Styles/Signup.css";
@@ -12,6 +12,12 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // Refs for input fields
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const confirmPasswordRef = useRef(null);
 
   const onEmailChange = (event) => setEmail(event.target.value);
   const onNameChange = (event) => setName(event.target.value);
@@ -28,6 +34,12 @@ function Signup() {
       return false;
     }
     return true;
+  };
+
+  const handleKeyPress = (event, nextRef) => {
+    if (event.key === 'Enter') {
+      nextRef.current.focus();
+    }
   };
 
   const register = async () => {
@@ -66,6 +78,8 @@ function Signup() {
             placeholder="Name"
             className="input-field"
             required
+            ref={nameRef}
+            onKeyPress={(event) => handleKeyPress(event, emailRef)}
           />
           <input
             type="email"
@@ -74,6 +88,8 @@ function Signup() {
             placeholder="Email"
             className="input-field"
             required
+            ref={emailRef}
+            onKeyPress={(event) => handleKeyPress(event, passwordRef)}
           />
           <input
             type="password"
@@ -82,6 +98,8 @@ function Signup() {
             placeholder="Password"
             className="input-field"
             required
+            ref={passwordRef}
+            onKeyPress={(event) => handleKeyPress(event, confirmPasswordRef)}
           />
           <input
             type="password"
@@ -90,6 +108,8 @@ function Signup() {
             placeholder="Confirm Password"
             className="input-field"
             required
+            ref={confirmPasswordRef}
+            onKeyPress={(event) => handleKeyPress(event, {current: {focus: register}})}
           />
           <button type="button" className="login-btn" onClick={register}>
             Signup
