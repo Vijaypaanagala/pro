@@ -94,6 +94,17 @@ function Work() {
     setSelectedJob(null);
   };
 
+  const handleJobUpdate = (updatedJob) => {
+    // Update job listings in state after editing
+    const updatedJobListings = jobListings.map(job => {
+      if (job.jobId === updatedJob.jobId) {
+        return updatedJob;
+      }
+      return job;
+    });
+    setJobListings(updatedJobListings);
+  };
+
   if (loading) {
     return (
       <div className="loading">

@@ -59,6 +59,10 @@ function MyJobs() {
       });
   };
 
+  const handleEditJob = (jobId, jobData) => {
+    navigate(`/editjob/${jobId}`, { state: { jobData: { ...jobData, userEmail } } }); // Redirect to EditJob with jobData in URL
+  };
+
   if (loading) {
     return <p className='loading'>Loading...</p>; 
   }
@@ -75,20 +79,30 @@ function MyJobs() {
               <p><strong>Period:</strong> {item.period}</p>
               <p><strong>Stipend:</strong> {item.stipend}</p>
               <p><strong>Description:</strong> {item.description}</p>
-              <button 
-                type="button" 
-                className="my-jobs-btn" 
-                onClick={() => handleViewApplicants(item.jobId, item.title)}
-              >
-                View Applicants
-              </button>
-              <button 
-                type="button" 
-                className="my-jobs-btn delete-btn" 
-                onClick={() => handleDeleteJob(item.jobId)}
-              >
-                Delete
-              </button>
+              <div className="my-jobs-buttons">
+                <button 
+                  type="button" 
+                  className="my-jobs-btn" 
+                  onClick={() => handleViewApplicants(item.jobId, item.title)}
+                >
+                  View Applicants
+                </button>
+                <button 
+                  type="button" 
+                  className="my-jobs-btn delete-btn" 
+                  onClick={() => handleDeleteJob(item.jobId)}
+                >
+                  Delete
+                </button>
+                <button 
+                  type="button" 
+                  className="my-jobs-btn edit-btn" 
+                  onClick={() => handleEditJob(item.jobId, item)}
+                >
+                  Edit
+                </button>
+                
+              </div>
             </div>
           ))
         ) : (
