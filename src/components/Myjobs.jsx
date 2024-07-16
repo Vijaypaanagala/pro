@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { dataRef, auth } from './Firebases';
-import "../Styles/MyJobs.css"; // Import the CSS file
 import { useNavigate } from 'react-router-dom';
+import "../Styles/MyJobs.css";
 
 function MyJobs() {
   const [userPosts, setUserPosts] = useState([]);
@@ -14,7 +14,7 @@ function MyJobs() {
       if (user) {
         setUserEmail(user.email);
       } else {
-        navigate('/login');
+        navigate('/login'); // Redirect to login if not authenticated
       }
     });
 
@@ -24,26 +24,29 @@ function MyJobs() {
   useEffect(() => {
     if (userEmail) {
       const sanitizedEmail = userEmail.replace(/\./g, ',');
-      dataRef.ref().child(`all/${sanitizedEmail}`).on('value', snapshot => {
+      const postsRef = dataRef.ref(`all/${sanitizedEmail}`);
+
+      const fetchUserPosts = postsRef.on('value', snapshot => {
         const data = snapshot.val();
         if (data) {
-          const getUserPosts = Object.values(data).reverse(); // Reverse to get recent jobs first
-          setUserPosts(getUserPosts);
+          const userPostsData = Object.values(data).reverse();
+          setUserPosts(userPostsData);
         } else {
           setUserPosts([]);
         }
         setLoading(false);
       });
+
+      return () => postsRef.off('value', fetchUserPosts);
     }
   }, [userEmail]);
 
-  const handleViewApplicants = (postId) => {
-    console.log(`View applicants for post ID: ${postId}`);
-    // Implement the logic to view applicants
+  const handleViewApplicants = (jobId, jobTitle) => {
+    navigate(`/myjobs/${jobId}/applicants`, { state: { jobId, jobTitle } }); // Redirect to ViewApplicants with jobId and jobTitle in URL
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className='loading'>Loading...</p>; 
   }
 
   return (
@@ -61,7 +64,7 @@ function MyJobs() {
               <button 
                 type="button" 
                 className="my-jobs-btn" 
-                onClick={() => handleViewApplicants(item.postId)} // Pass the postId to handleViewApplicants
+                onClick={() => handleViewApplicants(item.jobId, item.title)}
               >
                 View Applicants
               </button>

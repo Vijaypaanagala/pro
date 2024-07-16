@@ -7,10 +7,8 @@ const Popup = ({ job, onCancel, onConfirm }) => {
 
   const handleConfirm = () => {
     if (!confirmSecondQuestion) {
-      // Show the second question
       setConfirmSecondQuestion(true);
     } else {
-      // If already confirmed the second question, proceed with onConfirm
       onConfirm();
     }
   };
@@ -34,7 +32,7 @@ const Popup = ({ job, onCancel, onConfirm }) => {
         <div className="popup-buttons">
           <button className="cancel-btn" onClick={onCancel}>Cancel</button>
           <button className="confirm-btn" onClick={handleConfirm}>
-            {confirmSecondQuestion ? 'Apply' : 'Confirm'}
+            {confirmSecondQuestion? 'Apply' : 'Confirm'}
           </button>
         </div>
       </div>

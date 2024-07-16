@@ -17,6 +17,9 @@ import Ef from "./components/Ef";
 import Ab from "./components/Ab";
 import Help from "./components/Help";
 import LiveChat from "./components/LiveChat";
+import ViewApplicants from "./components/ViewApplicants";
+// import ApplicantProfile from "./components/ApplicantProfile";
+
 
 function App() {
   return (
@@ -31,18 +34,22 @@ function App() {
             <Last />
            
           </>} />
-          <Route path="/page" element={<Page />} />
+          <Route path="/login" element={<Page />} />
           <Route path="/signup" element={<Signup />} />
+          
           <Route path="/talent" element={<Talent />} />
           <Route path="/work" element={<Work />} />
           <Route path="/edit" element={<Pr />} />
           <Route path="/Profile" element={<Profile />} />
-          <Route path="/temp" element={<MyJobs />} />
+          <Route path="/myjobs" element={<MyJobs />} />
           <Route path="/Events" element={<Events />} />
           <Route path="/form" element={<Ef />} />
           <Route path="/Ab" element={<Ab />} />
           <Route path="/Help" element = {<Help />} />
           <Route path="/livechat" element={<LiveChat />} />
+          <Route path="/myjobs/:postId/applicants" element={<ViewApplicants />} />
+          {/* <Route path="/applicantprofile/:id" element={<ApplicantProfile />} /> */}
+
         </Routes>
       </div>
     </Router>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { dataRef } from './Firebases';
-import "../Styles/Talent.css"; // Import CSS for styling
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import "../Styles/Talent.css";
 
 function Talent() {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ function Talent() {
     description: ""
   });
   const [userEmail, setUserEmail] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const auth = getAuth();
   const navigate = useNavigate(); // Hook for navigation
 
@@ -36,14 +37,28 @@ function Talent() {
     });
   };
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
     const { title, skills, period, stipend, description } = formData;
 
     if (title && skills && period && stipend && description && userEmail) {
-      // Replace '.' with ',' in email to use it as a key
-      const sanitizedEmail = userEmail.replace(/\./g, ',');
-      dataRef.ref(`all/${sanitizedEmail}`).push(formData).then(() => {
+      setIsLoading(true);
+      try {
+        const sanitizedEmail = userEmail.replace(/\./g, ',');
+        const jobRef = dataRef.ref(`all/${sanitizedEmail}`).push();
+        const jobId = jobRef.key; // Get the unique jobId
+
+        await jobRef.set({
+          title,
+          skills,
+          period,
+          stipend,
+          description,
+          jobId,
+          applicants: [], // Initialize applicants as an empty array
+          postedBy: sanitizedEmail // Store the email of the user who posted the job
+        });
+
         setFormData({
           title: "",
           skills: "",
@@ -51,8 +66,13 @@ function Talent() {
           stipend: "",
           description: ""
         });
+
         navigate('/work'); // Navigate to the Work component after successful submission
-      });
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -105,8 +125,8 @@ function Talent() {
             required
           />
           <center>
-            <button type="submit" className="apply">
-              Post
+            <button type="submit" className="apply" disabled={isLoading}>
+              {isLoading ? "Posting..." : "Post"}
             </button>
           </center>
         </div>

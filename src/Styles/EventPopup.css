@@ -4,36 +4,90 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    overflow-y: auto; /* Enable scrolling if content overflows */
-    padding: 20px; /* Add padding to avoid edge overlap */
+    overflow-y: auto;
+    padding: 20px;
 }
 
 .event-popup-content {
-    max-width: 700px;
-    max-height: 95%; /* Limit the height of the container */
+    width: 600px;
+    max-height: 90%;
     background-color: #ffffff;
     border-radius: 10px;
-    padding: 20px; /* Reduce padding */
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    padding: 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     position: relative;
-    overflow: hidden;
-    animation: fadeIn 0.3s ease; /* Fade-in animation */
+    overflow: auto;
+    animation: fadeIn 0.3s ease;
+    border-top: 4px solid #4CAF50;
+    
+    /* Scrollbar Styles */
+    scrollbar-width: thin; /* Firefox property for thin scrollbar */
+    scrollbar-color: #888 #f1f1f1; /* Thumb color and track color */
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+.event-popup-content::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+.event-popup-content::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+.event-popup-content::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    /* Ensure the thumb's edges are rounded */
+    border: 3px solid #f1f1f1; /* Add border to show rounded effect */
+}
+
+.event-popup-content::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}
+
+.event-popup-image-container {
+    position: relative;
+}
+
+.event-popup-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+
+
+.download-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.event-popup-image-container:hover .download-btn {
+    display: block;
+}
+
+.download-btn:hover {
+    background-color: #333;
 }
 
 .popup-header {
@@ -41,39 +95,38 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
 }
 
-.popup-header h2 {
+.hed {
     font-size: 24px;
     margin: 0;
     color: #333;
+    font-weight: 700;
 }
 
 .close-btn {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 24px;
-    color: #999;
+    font-size: 28px;
+    color: #4CAF50;
     position: absolute;
     top: 10px;
     right: 10px;
+    transition: color 0.3s ease;
 }
 
 .close-btn:hover {
-    color: #555;
-}
-
-.event-popup-image {
-    width: 100%;
-    max-height: 270px; /* Adjust max height for the image */
-    object-fit: cover;
-    border-radius: 10px; /* Remove separate border-radius */
-    margin-bottom: 20px; /* Add margin for spacing */
+    color: #333;
 }
 
 .event-popup-details {
-    padding: 15px; /* Reduce padding */
+    padding: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 20px;
 }
 
 .event-popup-details p {
@@ -82,60 +135,37 @@
     align-items: center;
     font-size: 16px;
     color: #555;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
 }
 
 .event-popup-details p svg {
-    margin-right: 10px; /* Add margin for icon spacing */
-    color: #4CAF50; /* Icon color */
+    margin-right: 10px;
+    color: black;
 }
 
 .event-popup-details button {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px; /* Reduce padding */
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
     margin-top: 20px;
-    display: block; /* Block element */
+    display: block;
     margin-left: auto;
-    margin-right: auto; /* Center the button */
-    transition: background-color 0.3s ease; /* Smooth transition */
+    margin-right: auto;
+    transition: background-color 0.3s ease;
 }
 
 .event-popup-details button:hover {
     background-color: #45a049;
 }
 
-/* Additional advanced styling for a professional look */
-.event-popup-details p {
-    font-family: 'Roboto', sans-serif; /* Use Roboto font */
-    font-weight: 500;
-    line-height: 1.5;
-}
-
-.event-popup-details {
-    border-top: 1px solid #eee;
-    padding-top: 15px; /* Reduce padding */
-    margin-top: 20px;
-}
-
 .popup-header h2 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    color: #4CAF50; /* Theme color */
-}
-
-.event-popup-content {
-    border-top: 4px solid #4CAF50; /* Add a border at the top */
-}
-
-.close-btn {
-    font-size: 28px;
-    color: #4CAF50; /* Theme color */
-}
-
-.close-btn:hover {
-    color: #333; /* Darker color on hover */
+    color: black;
 }
