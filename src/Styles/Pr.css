@@ -1,9 +1,12 @@
+/* Inside Pr.css */
+
 .main-contain-pr {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150vh;
+  height: 100vh;
   background-color: #f0f0f0;
+  margin-top: 250px;
 }
 
 .ps-form-container-pr {
@@ -20,7 +23,7 @@
 .ps-form-pr {
   display: flex;
   flex-direction: column;
-  height: 70%; /* Ensure the form takes up the full height of the container */
+  height: 100%; /* Ensure the form takes up the full height of the container */
 }
 
 .ps-form-pr h2 {
@@ -29,7 +32,8 @@
   color: #4CBB17;
 }
 
-.input-field-pr {
+.input-field-pr,
+.textarea-field-pr {
   margin-bottom: 15px;
   padding: 10px; /* Increased padding for larger field area */
   font-size: 16px; /* Increased font size for better readability */
@@ -44,7 +48,7 @@
 
 .button-container-pr {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Align buttons to the right */
   margin-top: 20px;
 }
 
@@ -70,36 +74,56 @@
   transform: translateY(0);
 }
 
-.skills-container-pr {
-  margin-top: 20px;
-}
+/* Skills Section */
 
-.skills-container-pr h5 {
-  margin-bottom: 10px;
-  color: black;
+.skills-container-pr {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
 .skills-list-pr {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 10px;
-  list-style-type: none;
-  padding: 0;
-}
-
-.skills-list-pr li {
-  display: flex;
-  align-items: center;
+  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
 .skill-checkbox-pr {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
-.search-bar-pr {
-  margin-bottom: 10px;
+.add-skill {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.add-skill-input {
+  flex: 1;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+
+.add-skill-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-skill-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.add-skill-btn:active {
+  background-color: #388e3c;
+  transform: translateY(0);
 }

@@ -94,3 +94,10 @@
 .event-details p svg {
   margin-right: 5px;
 }
+.loadingee,
+.no-events {
+  text-align: center; /* Center-align text */
+  margin-top: 20px; /* Adjust margin as needed */
+  font-size: 18px; /* Adjust font size */
+  color: #333; /* Text color */
+}

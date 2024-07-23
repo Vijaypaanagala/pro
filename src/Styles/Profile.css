@@ -64,16 +64,12 @@
 
 /* Skill tags */
 .skill-tag {
-  background-color: #4CBB17;
+  background-color: #4385cb;
   color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 14px;
   transition: background-color 0.3s;
-}
-
-.skill-tag:hover {
-  background-color: #398a12;
 }
 
 /* Edit button */
@@ -94,12 +90,44 @@
   background-color: #398a12;
 }
 
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.action-buttons button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.action-buttons button.accept-btn {
+  background-color: #4CBB17;
+  color: #fff;
+}
+
+.action-buttons button.decline-btn {
+  background-color: #FF6347;
+  color: #fff;
+}
+
+.action-buttons button:hover {
+  opacity: 0.9;
+}
+
 /* Loading message */
 .loading-message {
-  font-size: 16px;
-  color: #999;
+  font-size: 20px; /* Increased font size */
+  color: #333;
   text-align: center;
   padding: 20px;
+  font-weight: bold; /* Bold font */
 }
 
 /* Empty data popup */
@@ -126,4 +154,12 @@
 
 .profile-empty-popup button:hover {
   background-color: #398a12;
+}
+
+/* Loading and empty data messages */
+.loadingee,
+.profile-empty-popup {
+  text-align: center;
+  font-size: 18px; /* Adjust font size */
+  color: #333; /* Text color */
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { dataRef } from './Firebases';
+import { dataRef } from './Firebases'; // Assuming you have Firebase database reference
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Popup from './Popup'; // Assuming you have a Popup component defined
 import "../Styles/Work.css"; // Ensure you have appropriate styling
@@ -10,6 +10,7 @@ function Work() {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
   const [userEmail, setUserEmail] = useState('');
+  const [userId, setUserId] = useState(''); // Add state for user ID
   const auth = getAuth();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function Work() {
               allPosts.push({
                 ...data[userEmail][jobId],
                 jobId,
-                email: userEmail
+                postedBy: userEmail // Include postedBy email
               });
             });
           });
@@ -47,8 +48,10 @@ function Work() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserEmail(user.email);
+        setUserId(user.uid); // Set user ID
       } else {
         setUserEmail('');
+        setUserId(''); // Clear user ID
       }
     });
 
@@ -65,10 +68,10 @@ function Work() {
   const handleConfirm = async () => {
     if (userEmail && selectedJob) {
       try {
-        // Update job with applicant's email
         const jobId = selectedJob.jobId;
-        const jobRef = dataRef.ref(`all/${selectedJob.email}/${jobId}/applicants`);
 
+        // Update job with applicant's email
+        const jobRef = dataRef.ref(`all/${selectedJob.postedBy}/${jobId}/applicants`);
         await jobRef.transaction((applicants) => {
           if (!applicants) {
             applicants = [];
@@ -77,6 +80,20 @@ function Work() {
             applicants.push(userEmail);
           }
           return applicants;
+        });
+
+        // Update user's profile with the applied job details
+        const userRef = dataRef.ref(`users/${userId}/applied`);
+        await userRef.transaction((appliedJobs) => {
+          if (!appliedJobs) {
+            appliedJobs = [];
+          }
+          // Store job details including jobId and postedBy email
+          appliedJobs.push({
+            jobId: jobId,
+            postedBy: selectedJob.postedBy,
+          });
+          return appliedJobs;
         });
 
         console.log("Application submitted successfully!");

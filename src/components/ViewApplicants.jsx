@@ -7,6 +7,7 @@ import "../Styles/view.css";
 function ViewApplicants() {
   const [applicants, setApplicants] = useState([]);
   const [userEmail, setUserEmail] = useState(null);
+  const [loading, setLoading] = useState(true); // State to manage loading status
   const location = useLocation();
   const navigate = useNavigate();
   const auth = getAuth();
@@ -51,6 +52,8 @@ function ViewApplicants() {
         }
       } catch (error) {
         console.error("Error fetching applicants: ", error);
+      } finally {
+        setLoading(false); // Update loading state when fetching completes
       }
     }
   };
@@ -83,24 +86,36 @@ function ViewApplicants() {
     }
   }, [userEmail, jobId]);
 
+  const handleViewProfile = (email) => {
+    navigate(`/applicant-profile/${email}`);
+  };
+
   return (
     <div className="view-applicants-container">
       <h1 className="view-applicants-title">Applicants for {jobTitle}</h1>
-      {applicants.length === 0 ? (
-        <p className="no-applicants">Loading..</p>
+      {loading ? (
+        <p className="loadingee">Loading...</p>
       ) : (
-        <ul className="applicants-list">
-          {applicants.map((applicant, index) => (
-            <li key={index} className="applicant-card">
-              <div className="applicant-info">
-                <p><strong>Name:</strong> {applicant.fname} {applicant.lname}</p>
-                <p><strong>Email:</strong> {applicant.email}</p>
-                <p><strong>College:</strong> {applicant.college}</p>
-              </div>
-              <button className="view-profile-button">View Profile</button>
-            </li>
-          ))}
-        </ul>
+        <>
+          {applicants.length === 0 ? (
+            <p className="no-applicants">No applicants yet</p>
+          ) : (
+            <ul className="applicants-list">
+              {applicants.map((applicant, index) => (
+                <li key={index} className="applicant-card">
+                  <div className="applicant-info">
+                    <p><strong>Name:</strong> {applicant.fname} {applicant.lname}</p>
+                    <p><strong>Email:</strong> {applicant.email}</p>
+                    <p><strong>College:</strong> {applicant.college}</p>
+                  </div>
+                  <button className="view-profile-button" onClick={() => handleViewProfile(applicant.email)}>
+                    View Profile
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
       )}
     </div>
   );

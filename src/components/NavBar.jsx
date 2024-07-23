@@ -93,6 +93,7 @@ function NavBar() {
                 {showUserDetails && (
                   <div className="dropdown-menu dropdown-menu-end show" style={{ right: "0", left: "auto" }}>
                     <Link to="/profile" className="dropdown-item">Profile</Link>
+                    <Link to="/myapplications" className="dropdown-item">My Applications</Link>
                     <Link to="/myjobs" className="dropdown-item">My Jobs</Link>
                     <button className="dropdown-item" onClick={handleLogout}>Logout</button>
                   </div>

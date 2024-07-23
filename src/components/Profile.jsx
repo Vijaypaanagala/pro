@@ -65,12 +65,15 @@ function Profile() {
               </ul>
             </div>
           </div>
-          <Link to="/edit" type="button" className="edit-btn">
-            Edit
-          </Link>
+          <Link to={{
+  pathname: "/edit",
+  state: { userData }
+}} type="button" className="edit-btn">
+  Edit
+</Link>
         </>
       ) : (
-        <p>Loading ...</p>
+        <p className="loading-message">Loading ...</p>
       )}
       {showPopup && (
         <div className="profile-empty-popup">
