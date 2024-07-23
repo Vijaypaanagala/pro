@@ -10,6 +10,7 @@ function Work() {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
   const [userEmail, setUserEmail] = useState('');
+  const [appliedJobs, setAppliedJobs] = useState([]); // State for applied jobs
   const auth = getAuth();
 
   useEffect(() => {
@@ -50,8 +51,24 @@ function Work() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserEmail(user.email);
+
+        // Fetch applied jobs for the user
+        const fetchAppliedJobs = () => {
+          dataRef.ref(`users/${user.email}/appliedJobs`).on('value', (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+              setAppliedJobs(Object.keys(data));
+            } else {
+              setAppliedJobs([]);
+            }
+          });
+        };
+
+        fetchAppliedJobs();
+
       } else {
         setUserEmail('');
+        setAppliedJobs([]);
       }
     });
 
@@ -81,6 +98,10 @@ function Work() {
           }
           return applicants;
         });
+
+        // Update applied jobs list
+        const userAppliedJobsRef = dataRef.ref(`users/${userEmail}/appliedJobs`);
+        await userAppliedJobsRef.child(jobId).set(true);
 
         console.log("Application submitted successfully!");
 

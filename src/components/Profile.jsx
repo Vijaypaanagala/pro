@@ -43,24 +43,24 @@ function Profile() {
   };
 
   return (
-    <div className="profile-container">
+    <div className="profile-container-profile-unique">
       {userData ? (
         <>
-          <div className="profile-details">
-            <h2>Profile Details</h2>
-            <p><strong>First Name:</strong> {userData.fname}</p>
-            <p><strong>Last Name:</strong> {userData.lname}</p>
-            <p><strong>Additional Name:</strong> {userData.aname}</p>
-            <p><strong>Email:</strong> {userData.email}</p>
-            <p><strong>College:</strong> {userData.college}</p>
-            <p><strong>Location:</strong> {userData.location}</p>
-            <p><strong>Experience:</strong> {userData.exp}</p>
-            <p><strong>Achievements:</strong> {userData.ach}</p>
-            <div className="profile-skills">
+          <div className="profile-details-profile-unique">
+            <h2 className="profile-details-header-profile-unique">Profile Details</h2>
+            <p className="profile-details-info-profile-unique"><strong>First Name:</strong> {userData.fname}</p>
+            <p className="profile-details-info-profile-unique"><strong>Last Name:</strong> {userData.lname}</p>
+            <p className="profile-details-info-profile-unique"><strong>Additional Name:</strong> {userData.aname}</p>
+            <p className="profile-details-info-profile-unique"><strong>Email:</strong> {userData.email}</p>
+            <p className="profile-details-info-profile-unique"><strong>College:</strong> {userData.college}</p>
+            <p className="profile-details-info-profile-unique"><strong>Location:</strong> {userData.location}</p>
+            <p className="profile-details-info-profile-unique"><strong>Experience:</strong> {userData.exp}</p>
+            <p className="profile-details-info-profile-unique"><strong>Achievements:</strong> {userData.ach}</p>
+            <div className="profile-skills-profile-unique">
               <strong>Skills:</strong>
-              <ul>
+              <ul className="profile-skills-list-profile-unique">
                 {userData.skills && userData.skills.map((skill, index) => (
-                  <li key={index} className="skill-tag">{skill}</li>
+                  <li key={index} className="skill-tag-profile-unique">{skill}</li>
                 ))}
               </ul>
             </div>
@@ -70,12 +70,12 @@ function Profile() {
           </Link>
         </>
       ) : (
-        <p>Loading ...</p>
+        <p className="loading-message-profile-unique">Loading...</p>
       )}
       {showPopup && (
-        <div className="profile-empty-popup">
+        <div className="profile-empty-popup-profile-unique">
           <p>No profile data found. Please create your profile.</p>
-          <button onClick={handleCreateProfile}>Create Profile</button>
+          <button onClick={handleCreateProfile} className="profile-empty-popup-button-profile-unique">Create Profile</button>
         </div>
       )}
     </div>

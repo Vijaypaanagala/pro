@@ -1,4 +1,4 @@
-.profile-container-profile-unique {
+.profile-container-unique {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,7 +6,7 @@
   margin-top: 100px;
 }
 
-.profile-details-profile-unique {
+.profile-details-unique {
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 8px;
@@ -16,25 +16,25 @@
   margin-bottom: 20px;
 }
 
-.profile-details-header-profile-unique {
+.profile-details-header-unique {
   margin-bottom: 10px;
   color: #333;
 }
 
-.profile-details-info-profile-unique {
+.profile-details-info-unique {
   margin: 5px 0;
 }
 
-.profile-skills-profile-unique {
+.profile-skills-unique {
   margin-top: 15px;
 }
 
-.profile-skills-list-profile-unique {
+.profile-skills-list-unique {
   list-style-type: none;
   padding: 0;
 }
 
-.skill-tag-profile-unique {
+.skill-tag-unique {
   display: inline-block;
   margin-right: 10px;
   background-color: #e0e0e0;
@@ -42,34 +42,35 @@
   border-radius: 15px;
 }
 
-.edit-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  text-align: center;
+.action-buttons-unique {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px;
 }
 
-.loading-message-profile-unique {
-  font-size: 16px;
-  color: #666;
-}
-
-.profile-empty-popup-profile-unique {
-  background-color: #ffefef;
-  border: 1px solid #ffcccc;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.profile-empty-popup-button-profile-unique {
+.accept-btn-unique, .decline-btn-unique {
   background-color: #007bff;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
+}
+
+.decline-btn-unique {
+  background-color: #dc3545;
+}
+
+.loading-message-unique {
+  font-size: 16px;
+  color: #666;
+}
+
+.profile-empty-popup-unique {
+  background-color: #ffefef;
+  border: 1px solid #ffcccc;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
 }

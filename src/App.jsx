@@ -18,7 +18,9 @@ import Ab from "./components/Ab";
 import Help from "./components/Help";
 import LiveChat from "./components/LiveChat";
 import ViewApplicants from "./components/ViewApplicants";
-// import ApplicantProfile from "./components/ApplicantProfile";
+import MyApplications from "./components/MyApplications";
+
+import ApplicantProfile from "./components/ApplicantProfile";
 
 
 function App() {
@@ -46,7 +48,9 @@ function App() {
           <Route path="/Help" element={<Help />} />
           <Route path="/livechat" element={<LiveChat />} />
           <Route path="/myjobs/:postId/applicants" element={<ViewApplicants />} />
-          {/* <Route path="/applicantprofile/:id" element={<ApplicantProfile />} /> */}
+
+            <Route path="/applicant-profile/:email" element={<ApplicantProfile />} />
+            <Route path="/myapplications" element={<MyApplications />} />
 
         </Routes>
       </div>

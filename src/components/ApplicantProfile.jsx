@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { dataRef } from './Firebases';
 import { useParams, useNavigate } from "react-router-dom";
-import '../Styles/Profile.css';
+import '../Styles/ap.css';
 
 function ApplicantProfile() {
   const [userData, setUserData] = useState(null);
@@ -20,69 +20,57 @@ function ApplicantProfile() {
           setUserData(userSnapshot.val());
         } else {
           setShowPopup(true);
-          console.log("No data available for the applicant");
         }
       } catch (error) {
         console.error("Error reading data: ", error);
       }
     };
 
-    if (email) {
-      fetchApplicantData();
-    }
+    fetchApplicantData();
   }, [email]);
 
-  const handleCreateProfile = () => {
-    navigate('/edit');
-  };
-
   const handleAccept = () => {
-    // Logic to mark applicant as accepted
-    setAccepted(true);
+    setAccepted(true); // Set accepted to true on click
   };
 
   const handleDecline = () => {
-    // Logic to mark applicant as declined
-    setAccepted(false);
+    setAccepted(false); // Set accepted to false on click
   };
 
   return (
-    <div className="profile-container">
+    <div className="profile-container-unique">
       {userData ? (
         <>
-          <div className="profile-details">
-            <h2>Profile Details</h2>
-            <p><strong>First Name:</strong> {userData.fname}</p>
-            <p><strong>Last Name:</strong> {userData.lname}</p>
-            <p><strong>Additional Name:</strong> {userData.aname}</p>
-            <p><strong>Email:</strong> {userData.email}</p>
-            <p><strong>College:</strong> {userData.college}</p>
-            <p><strong>Location:</strong> {userData.location}</p>
-            <p><strong>Experience:</strong> {userData.exp}</p>
-            <p><strong>Achievements:</strong> {userData.ach}</p>
-            <div className="profile-skills">
+          <div className="profile-details-unique">
+            <h2 className="profile-details-header-unique">Applicant Details</h2>
+            <p className="profile-details-info-unique"><strong>First Name:</strong> {userData.fname}</p>
+            <p className="profile-details-info-unique"><strong>Last Name:</strong> {userData.lname}</p>
+            <p className="profile-details-info-unique"><strong>Additional Name:</strong> {userData.aname}</p>
+            <p className="profile-details-info-unique"><strong>Email:</strong> {userData.email}</p>
+            <p className="profile-details-info-unique"><strong>College:</strong> {userData.college}</p>
+            <p className="profile-details-info-unique"><strong>Location:</strong> {userData.location}</p>
+            <p className="profile-details-info-unique"><strong>Experience:</strong> {userData.exp}</p>
+            <p className="profile-details-info-unique"><strong>Achievements:</strong> {userData.ach}</p>
+            <div className="profile-skills-unique">
               <strong>Skills:</strong>
-              <ul>
+              <ul className="profile-skills-list-unique">
                 {userData.skills && userData.skills.map((skill, index) => (
-                  <li key={index} className="skill-tag">{skill}</li>
+                  <li key={index} className="skill-tag-unique">{skill}</li>
                 ))}
               </ul>
             </div>
           </div>
-          {!accepted && (
-            <div className="action-buttons">
-              <button className="accept-btn" onClick={handleAccept}>Accept</button>
-              <button className="decline-btn" onClick={handleDecline}>Decline</button>
-            </div>
-          )}
+          <div className="action-buttons-unique">
+            <button onClick={handleAccept} className="accept-btn-unique">Accept</button>
+            <button onClick={handleDecline} className="decline-btn-unique">Decline</button>
+          </div>
         </>
       ) : (
-        <p className="loading-message">Loading ...</p>
+        <p className="loading-message-unique">Loading...</p>
       )}
       {showPopup && (
-        <div className="profile-empty-popup">
-          <p>No profile data found. Please create your profile.</p>
-          <button onClick={handleCreateProfile}>Create Profile</button>
+        <div className="profile-empty-popup-unique">
+          <p>No applicant data found.</p>
         </div>
       )}
     </div>
