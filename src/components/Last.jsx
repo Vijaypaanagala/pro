@@ -9,17 +9,23 @@ function Last() {
   };
 
   return (
-    <center>
-    <footer className="text-center text-lg-start custom-footer">
-      <div className="container-fluid p-4 pb-0" style={{ backgroundColor: "black" }}>
-        <section className="">
-          <div className="row">
-            <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 className="text-uppercase mb-4 font-weight-bold">Company</h6>
-              <p>
-                {/* Add company description or other content here */}
-              </p>
-            </div>
+    <div>
+      <div className="container my-5">
+        <footer
+          className="text-center text-lg-start text-white"
+          style={{ backgroundColor: 'black' }}
+        >
+          <div className="container p-4 pb-0">
+            <section className="">
+              <div className="row">
+                <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                  <h6 className="text-uppercase mb-4 font-weight-bold">
+                    Company
+                  </h6>
+                  <p>
+                    
+                  </p>
+                </div>
 
             <hr className="w-100 clearfix d-md-none" />
 
@@ -54,22 +60,23 @@ function Last() {
 
         <hr className="my-3" />
 
-        <section className="p-3 pt-0">
-          <div className="row d-flex align-items-center">
-            <div className="col-md-7 col-lg-8 text-center text-md-start">
-              <div className="p-3"></div>
-            </div>
-            <div className="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-              <a className="btn btn-outline-light btn-floating m-1 text-white" href="#!" role="button"><i className="fab fa-facebook-f"></i></a>
-              <a className="btn btn-outline-light btn-floating m-1 text-white" href="#!" role="button"><i className="fab fa-twitter"></i></a>
-              <a className="btn btn-outline-light btn-floating m-1 text-white" href="#!" role="button"><i className="fab fa-google"></i></a>
-              <a className="btn btn-outline-light btn-floating m-1 text-white" href="#!" role="button"><i className="fab fa-instagram"></i></a>
-            </div>
+            <section className="p-3 pt-0">
+              <div className="row d-flex align-items-center">
+                <div className="col-md-7 col-lg-8 text-center text-md-start">
+                  <div className="p-3"></div>
+                </div>
+                <div className="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                  <a className="btn btn-outline-light btn-floating m-1 text-white" href="#!" role="button"><i className="fab fa-facebook-f"></i></a>
+                  <a className="btn btn-outline-light btn-floating m-1 text-white" href="#!" role="button"><i className="fab fa-twitter"></i></a>
+                  <a className="btn btn-outline-light btn-floating m-1 text-white" href="#!" role="button"><i className="fab fa-google"></i></a>
+                  <a className="btn btn-outline-light btn-floating m-1 text-white" href="#!" role="button"><i className="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
+        </footer>
       </div>
-    </footer>
-    </center>
+    </div>
   );
 }
 

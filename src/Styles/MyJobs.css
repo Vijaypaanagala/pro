@@ -32,10 +32,17 @@
 }
 
 /* Job item title styles */
-.my-jobs-item h3 {
+.my-jobs-item h4 {
   text-align: left; /* Align job titles to the left */
   color: #000000; /* Bold black text */
   font-weight: bold; /* Bold text */
+}
+
+/* Buttons container */
+.my-jobs-buttons {
+  display: flex;
+  align-items: center; /* Center align buttons vertically */
+  margin-top: 10px;
 }
 
 /* Button styles */
@@ -47,10 +54,34 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-right: 10px; /* Added margin between buttons */
+}
+
+.my-jobs-btn:last-child {
+  margin-right: 0; /* Remove margin from the last button */
 }
 
 .my-jobs-btn:hover {
   background-color: #3a9611; /* Darker green on hover */
+}
+
+/* Specific styles for delete button */
+.delete-btn {
+  background-color: #d9534f;
+}
+
+.delete-btn:hover {
+  background-color: #c9302c; /* Darker red on hover */
+}
+
+/* Specific styles for edit button */
+.edit-btn {
+  background-color: #007bff; /* Blue color */
+  margin-bottom: 0px;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
 /* Responsive adjustments */
@@ -76,11 +107,4 @@
     padding: 6px 12px;
     font-size: 0.9rem;
   }
-}
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-size: 24px;
 }

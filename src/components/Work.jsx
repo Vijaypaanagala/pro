@@ -10,7 +10,6 @@ function Work() {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
   const [userEmail, setUserEmail] = useState('');
-  const [userId, setUserId] = useState(''); // Add state for user ID
   const auth = getAuth();
 
   useEffect(() => {
@@ -29,7 +28,10 @@ function Work() {
               });
             });
           });
-          setJobListings(allPosts.reverse()); // Reverse to show latest posts first
+
+          // Filter out jobs that the user has already applied for
+          const filteredPosts = allPosts.filter(job => !appliedJobs.includes(job.jobId));
+          setJobListings(filteredPosts.reverse()); // Reverse to show latest posts first
         } else {
           setJobListings([]);
         }
@@ -41,17 +43,15 @@ function Work() {
 
     // Clean up function to unsubscribe from Firebase
     return () => dataRef.ref('all').off();
-  }, []);
+  }, [appliedJobs]);
 
   useEffect(() => {
     // Check if user is authenticated
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserEmail(user.email);
-        setUserId(user.uid); // Set user ID
       } else {
         setUserEmail('');
-        setUserId(''); // Clear user ID
       }
     });
 
@@ -82,21 +82,13 @@ function Work() {
           return applicants;
         });
 
-        // Update user's profile with the applied job details
-        const userRef = dataRef.ref(`users/${userId}/applied`);
-        await userRef.transaction((appliedJobs) => {
-          if (!appliedJobs) {
-            appliedJobs = [];
-          }
-          // Store job details including jobId and postedBy email
-          appliedJobs.push({
-            jobId: jobId,
-            postedBy: selectedJob.postedBy,
-          });
-          return appliedJobs;
-        });
-
         console.log("Application submitted successfully!");
+
+        // Remove the job from the current job listings
+        setJobListings(prevJobListings =>
+          prevJobListings.filter(job => job.jobId !== jobId)
+        );
+
       } catch (error) {
         console.error("Error submitting application: ", error);
       } finally {
